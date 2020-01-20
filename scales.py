@@ -19,7 +19,7 @@ def _get_fret_number(string, note):
     for (pitch, index) in pitches:
         if string.lower() == pitch.lower():
             start = index
-        elif note.lower() == pitch.lower():
+        if note.lower() == pitch.lower():
             stop = index
     fret = 12 - (start - stop)
     return fret % 12
@@ -102,7 +102,7 @@ if __name__ == '__main__':
 
     gb_dorian = ['gb', 'Ab', 'Bbb', 'Cb', 'db', 'Eb', 'FB']
     flats = Scales(title='Gb Dorian', scale=gb_dorian)
-    flats.draw(stop=5)
+    # flats.draw(stop=5)
 
     c_major = ['C', 'D', 'E', 'F', 'G', 'A', 'B']
     ukelele = Scales(title='C Major on Ukelele', strings=['G', 'C', 'E', 'A'], scale=c_major)
@@ -110,3 +110,10 @@ if __name__ == '__main__':
 
     g_chord = ['G', 'B', 'D']
     # Scales(title='Open G', scale=g_chord).draw(stop=3)
+
+    e_minor = ['E', 'F#', 'G', 'A', 'B', 'C', 'D']
+    bass = Scales(title='E Minor on 4-string bass', strings=['E', 'A', 'D', 'G'], scale=e_minor)
+    bass.draw()
+
+    # A blank sheet to print and write in your own scales
+    # Scales([]).draw()
