@@ -1,6 +1,6 @@
 # scales
 
-A tool to generate guitar scale visual aids written in Python
+A tool to generate stringed instrument visual aids
 
 * [Usage](#usage)
 * [Dependencies](#dependencies)

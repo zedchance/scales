@@ -13,7 +13,7 @@ def _get_fret_number(string, note):
 
 
 class Scales:
-    """ A tool to generate stringed instruments visual aids """
+    """ A tool to generate stringed instrument visual aids """
 
     def __init__(self, scale: list, strings=None, title=None):
         """
@@ -34,7 +34,6 @@ class Scales:
         fig, ax = plt.subplots(figsize=(x, y))
         plt.subplots_adjust(left=0.04, right=.98, top=.85, bottom=.1)
         ax.set_axis_off()
-        # ax.margins(y=0.1)
         ax.set_title(self.title)
         marker_style = dict(color='tab:blue', linestyle=':', marker='o', markersize=15, markerfacecoloralt='tab:red')
         # Draw fretboard
