@@ -8,7 +8,6 @@ def _get_fret_number(string, note):
     start = pitches.index(string)
     stop = pitches.index(note)
     fret = 12 - (start - stop)
-    # print(string, note, fret % 12)
     return fret % 12
 
 
@@ -30,7 +29,11 @@ class Scales:
         self.title = title
 
     def _draw_fretboard(self, x: float, y: float):
-        """ Draws a scale on a full fretboard """
+        """
+        Draws a scale on a full fretboard in preparation for the draw function
+        :param x: width of figure
+        :param y: height of figure
+        """
         fig, ax = plt.subplots(figsize=(x, y))
         plt.subplots_adjust(left=0.04, right=.98, top=.85, bottom=.1)
         ax.set_axis_off()
@@ -40,8 +43,10 @@ class Scales:
         markers = [3, 5, 7, 9, 12, 15, 17]
         total_frets = 24
         for n, string in enumerate(self.strings):
+            # Draw string labels and string lines
             ax.text(-0.4, n, string, horizontalalignment='center', verticalalignment='center')
             ax.plot(n * np.ones(total_frets), linestyle='solid', color='black')
+            # Fill fretboard with empty markers and label fret numbers
             for fret in range(1, total_frets):
                 ax.plot(fret, n, fillstyle='none', **marker_style)
                 number_color = 'black'
