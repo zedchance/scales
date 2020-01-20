@@ -4,17 +4,17 @@ import numpy as np
 
 def _get_fret_number(string, note):
     """ Returns the fret number of a given note on a given string """
-    pitches = [('A', 0), ('Bbb', 0),
-               ('A#', 1), ('Bb', 1),
-               ('B', 2), ('Cb', 2),
-               ('B#', 3), ('C', 3),
-               ('C#', 4), ('Db', 4),
-               ('D', 5),
-               ('D#', 6), ('Eb', 6),
-               ('E', 7), ('Fb', 7),
-               ('E#', 8), ('F', 8),
-               ('F#', 9), ('Gb', 9),
-               ('G', 10),
+    pitches = [('A', 0), ('Bbb', 0), ('G##', 0),
+               ('A#', 1), ('Bb', 1), ('Cbb', 1),
+               ('B', 2), ('Cb', 2), ('A##', 2),
+               ('B#', 3), ('C', 3), ('Dbb', 3),
+               ('C#', 4), ('Db', 4), ('B##', 4),
+               ('D', 5), ('C##', 5), ('Ebb', 5),
+               ('D#', 6), ('Eb', 6), ('Fbb', 6),
+               ('E', 7), ('Fb', 7), ('D##', 7),
+               ('E#', 8), ('F', 8), ('Gbb', 8),
+               ('F#', 9), ('Gb', 9), ('E##', 9),
+               ('G', 10), ('F##', 10), ('Abb', 10),
                ('G#', 11), ('Ab', 11)]
     for (pitch, index) in pitches:
         if string.lower() == pitch.lower():
