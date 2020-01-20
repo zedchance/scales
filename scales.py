@@ -4,9 +4,23 @@ import numpy as np
 
 def _get_fret_number(string, note):
     """ Returns the fret number of a given note on a given string """
-    pitches = ['A', 'A#', 'B', 'C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#']
-    start = pitches.index(string)
-    stop = pitches.index(note)
+    pitches = [('A', 0), ('Bbb', 0),
+               ('A#', 1), ('Bb', 1),
+               ('B', 2), ('Cb', 2),
+               ('B#', 3), ('C', 3),
+               ('C#', 4), ('Db', 4),
+               ('D', 5),
+               ('D#', 6), ('Eb', 6),
+               ('E', 7), ('Fb', 7),
+               ('E#', 8), ('F', 8),
+               ('F#', 9), ('Gb', 9),
+               ('G', 10),
+               ('G#', 11), ('Ab', 11)]
+    for (pitch, index) in pitches:
+        if string.lower() == pitch.lower():
+            start = index
+        elif note.lower() == pitch.lower():
+            stop = index
     fret = 12 - (start - stop)
     return fret % 12
 
@@ -83,11 +97,16 @@ class Scales:
 if __name__ == '__main__':
     a_mixo = ['A', 'B', 'C#', 'D', 'E', 'F#', 'G']
     six_string = Scales(title='A Mixolydian', scale=a_mixo)
-    six_string.draw(start=11, stop=15)
+    # six_string.draw(start=11, stop=15)
+    # six_string.draw(start=4, stop=7)
+
+    gb_dorian = ['gb', 'Ab', 'Bbb', 'Cb', 'db', 'Eb', 'FB']
+    flats = Scales(title='Gb Dorian', scale=gb_dorian)
+    flats.draw(stop=5)
 
     c_major = ['C', 'D', 'E', 'F', 'G', 'A', 'B']
     ukelele = Scales(title='C Major on Ukelele', strings=['G', 'C', 'E', 'A'], scale=c_major)
-    ukelele.draw()
+    # ukelele.draw()
 
     g_chord = ['G', 'B', 'D']
-    Scales(title='Open G', scale=g_chord).draw(stop=3)
+    # Scales(title='Open G', scale=g_chord).draw(stop=3)
