@@ -6,7 +6,7 @@ A tool to generate guitar scale visual aids written in Python
 * [Dependencies](#dependencies)
 
 ## Usage
-Scales objects take at least the `scale` parameter, which should be a list of notes. They can be drawn using the `draw` function, where `start` and `stop` are the range of frets to show.
+Scales objects take at least the `scale` parameter, which should be a list of notes. They can be drawn using the `draw` function, where `start` and `stop` are the range of frets to show (defaults to showing 15 frets if not specified).
 
 For example:
 
