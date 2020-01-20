@@ -15,50 +15,57 @@ def get_fret_number(string, note):
 class Scales:
     """ Python library to draw guitar scales """
 
-    def __init__(self, scale : list, strings=None, title=None):
+    def __init__(self, scale : list, strings=None, title=None, two_octaves=False):
         if strings is None:  # Standard tuning
             self.strings = ['E', 'A', 'D', 'G', 'B', 'E']
         self.scale = scale
         self.title = title
+        self.two_octaves = two_octaves
 
     def draw(self):
-        """ Draws a scale on a full fretboard, defaults to standard tuning """
+        """ Draws a scale on a full fretboard """
         fig, ax = plt.subplots(figsize=(7, 2.25))
+        plt.subplots_adjust(left=0.02, right=1)
         ax.set_axis_off()
         ax.margins(y=0.1)
         ax.set_title(self.title)
         marker_style = dict(color='tab:blue', linestyle=':', marker='o', markersize=15, markerfacecoloralt='tab:red')
         # Draw fretboard
+        markers = [3, 5, 7, 9, 12, 15, 17]
+        total_frets = 15
+        if self.two_octaves:
+            total_frets = 24
         for n, string in enumerate(self.strings):
             ax.text(-0.75, n, string, horizontalalignment='center', verticalalignment='center')
-            for fret in range(1, 15):
-                ax.plot(n * np.ones(15), linestyle='solid', color='black')
-                ax.text(fret, -0.75, fret, horizontalalignment='center', verticalalignment='center')
+            ax.plot(n * np.ones(total_frets), linestyle='solid', color='black')
+            for fret in range(1, total_frets):
                 ax.plot(fret, n, fillstyle='none', **marker_style)
+                number_color = 'black'
+                if fret in markers:
+                    plt.axvline(fret, color='black')
+                    number_color = 'red'
+                ax.text(fret, -0.75, fret, color=number_color, horizontalalignment='center', verticalalignment='center')
         # Draw notes
         for i in range(6):
             for j in range(7):
-                get_fret_number(self.strings[i], self.scale[j])
+                # Determine fill style, unique on root
                 fillstyle = 'full'
                 if self.scale[j] == self.scale[0]:
                     fillstyle = 'top'
-                ax.plot(get_fret_number(self.strings[i], self.scale[j]), i, fillstyle=fillstyle, **marker_style)
+                # Plot notes
+                fret = get_fret_number(self.strings[i], self.scale[j])
+                ax.plot(fret, i, fillstyle=fillstyle, **marker_style)
+                if self.two_octaves:
+                    ax.plot(fret + 12, i, fillstyle=fillstyle, **marker_style)
         plt.show()
 
 
 # Test code
-a_mixo = ['A', 'B', 'C#', 'D', 'E', 'F#', 'G']
-c_major = ['C', 'D', 'E', 'F', 'G', 'A', 'B']
+if __name__ == '__main__':
+    a_mixo = ['A', 'B', 'C#', 'D', 'E', 'F#', 'G']
+    c_major = ['C', 'D', 'E', 'F', 'G', 'A', 'B']
 
-s = Scales(title='A Mixolydian', scale=a_mixo)
-s2 = Scales(title='C Major', scale=c_major)
-s.draw()
-# s2.draw()
-
-# get_fret_number('E', 'A')
-# get_fret_number('A', 'C')
-# get_fret_number('B', 'B')
-# get_fret_number('D', 'D#')
-# get_fret_number('D', 'C')
-# get_fret_number('G', 'D')
-# get_fret_number('G', 'G#')
+    s = Scales(title='A Mixolydian', scale=a_mixo, two_octaves=True)
+    s2 = Scales(title='C Major', scale=c_major)
+    s.draw()
+    s2.draw()
