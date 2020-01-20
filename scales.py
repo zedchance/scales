@@ -105,15 +105,18 @@ if __name__ == '__main__':
     # flats.draw(stop=5)
 
     c_major = ['C', 'D', 'E', 'F', 'G', 'A', 'B']
-    ukelele = Scales(title='C Major on Ukelele', strings=['G', 'C', 'E', 'A'], scale=c_major)
-    # ukelele.draw()
+    ukulele = Scales(title='C Major on Ukulele', strings=['G', 'C', 'E', 'A'], scale=c_major)
+    # ukulele.draw()
 
     g_chord = ['G', 'B', 'D']
     # Scales(title='Open G', scale=g_chord).draw(stop=3)
 
     e_minor = ['E', 'F#', 'G', 'A', 'B', 'C', 'D']
     bass = Scales(title='E Minor on 4-string bass', strings=['E', 'A', 'D', 'G'], scale=e_minor)
-    bass.draw()
+    # bass.draw()
 
     # A blank sheet to print and write in your own scales
     # Scales([]).draw()
+
+    # Chord sheet
+    # Scales([]).draw(stop=3)

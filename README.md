@@ -3,6 +3,7 @@
 A tool to generate stringed instrument visual aids
 
 * [Usage](#usage)
+  * [Other helpful uses](#other-helpful-uses)
 * [Dependencies](#dependencies)
 
 ## Usage
@@ -22,8 +23,8 @@ By default, it will assume a 6 string guitar in standard tuning, but you can spe
 
 ```py
 c_major = ['C', 'D', 'E', 'F', 'G', 'A', 'B']
-ukelele = Scales(title='C Major on Ukelele', strings=['G', 'C', 'E', 'A'], scale=c_major)
-ukelele.draw()
+ukulele = Scales(title='C Major on Ukulele', strings=['G', 'C', 'E', 'A'], scale=c_major)
+ukulele.draw()
 ```
 
 ![c_maj_uke](screenshots/c_maj_uke.png)
@@ -36,6 +37,20 @@ Scales(title='Open G', scale=g_chord).draw(stop=3)
 ```
 
 ![open_g](screenshots/open_g.png)
+
+### Other helpful uses
+
+Scales can be used to generate blank visuals to print out. Heres a blank 6 string fretboard:
+
+```py
+Scales([]).draw()
+```
+
+Or a blank open chord chart:
+
+```py
+Scales([]).draw(stop=3)
+```
 
 ## Dependencies
 
