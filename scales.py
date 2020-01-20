@@ -82,7 +82,7 @@ if __name__ == '__main__':
     six_string.draw(start=11, stop=15)
 
     c_major = ['C', 'D', 'E', 'F', 'G', 'A', 'B']
-    ukelele = Scales(title='C Major on Ukelele', strings=['E', 'B', 'G', 'D'], scale=c_major)
+    ukelele = Scales(title='C Major on Ukelele', strings=['G', 'C', 'E', 'A'], scale=c_major)
     ukelele.draw()
 
     g_chord = ['G', 'B', 'D']

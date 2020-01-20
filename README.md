@@ -22,7 +22,7 @@ By default, it will assume a 6 string guitar in standard tuning, but you can spe
 
 ```py
 c_major = ['C', 'D', 'E', 'F', 'G', 'A', 'B']
-ukelele = Scales(title='C Major', strings=['E', 'B', 'G', 'D'], scale=c_major)
+ukelele = Scales(title='C Major on Ukelele', strings=['G', 'C', 'E', 'A'], scale=c_major)
 ukelele.draw()
 ```
 
