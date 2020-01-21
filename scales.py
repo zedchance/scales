@@ -88,8 +88,13 @@ class Scales:
         :param start: fret to start drawing at, defaults to 0
         :param stop: fret to stop drawing at, defaults to 15
         """
+        # Get range of frets to zoom into
         distance = abs(start - stop)
-        self._draw_fretboard(distance * .5 + 1, len(self.strings) / 2.5, start)
+        # Size of figure
+        x = distance * .5 + 1
+        y = len(self.strings) / 2.7
+        self._draw_fretboard(x, y, start)
+        # Zoom
         plt.axis([start - 0.5, stop + 0.5, -.5, len(self.strings) - 0.5])
         plt.show()
         plt.close()
@@ -100,7 +105,7 @@ if __name__ == '__main__':
     a_mixo = ['A', 'B', 'C#', 'D', 'E', 'F#', 'G']
     six_string = Scales(title='A Mixolydian', scale=a_mixo)
     six_string.draw(start=11, stop=15)
-    six_string.draw(start=4, stop=7)
+    six_string.draw(start=4, stop=8)
 
     e_mixo = ['E', 'F#', 'G#', 'A', 'B', 'C#', 'D']
     Scales(title='E Mixolydian on 4 string bass', strings=['E', 'A', 'D', 'G'], scale=e_mixo).draw()
@@ -111,7 +116,7 @@ if __name__ == '__main__':
 
     c_major = ['C', 'D', 'E', 'F', 'G', 'A', 'B']
     ukulele = Scales(title='C Major on Ukulele', strings=['G', 'C', 'E', 'A'], scale=c_major)
-    # ukulele.draw()
+    ukulele.draw()
 
     g_chord = ['G', 'B', 'D']
     # Scales(title='Open G', scale=g_chord).draw(stop=3)
