@@ -22,12 +22,11 @@ setup(
         'Intended Audience :: Developers',
         'Topic :: Software Development :: Build Tools',
         'License :: OSI Approved :: MIT License',
-        'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: 3.8',
     ],
     keywords='music guitar matplotlib',
     py_modules=["scales"],
-    python_requires='>=3.5',
+    python_requires='>=3.7',
     install_requires=['matplotlib', 'numpy'],
 )
