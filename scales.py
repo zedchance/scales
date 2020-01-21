@@ -98,7 +98,7 @@ if __name__ == '__main__':
     a_mixo = ['A', 'B', 'C#', 'D', 'E', 'F#', 'G']
     six_string = Scales(title='A Mixolydian', scale=a_mixo)
     # six_string.draw(start=11, stop=15)
-    # six_string.draw(start=4, stop=7)
+    six_string.draw(start=4, stop=7)
 
     gb_dorian = ['gb', 'Ab', 'Bbb', 'Cb', 'db', 'Eb', 'FB']
     flats = Scales(title='Gb Dorian', scale=gb_dorian)
