@@ -42,7 +42,7 @@ class Scales:
         self.scale = scale
         self.title = title
 
-    def _draw_fretboard(self, x: float, y: float):
+    def _draw_fretboard(self, x: float, y: float, start: int):
         """
         Draws a scale on a full fretboard in preparation for the draw function
         :param x: width of figure
@@ -58,8 +58,9 @@ class Scales:
         total_frets = 24
         for n, string in enumerate(self.strings):
             # Draw string labels and string lines
-            ax.text(-0.4, n, string, horizontalalignment='center', verticalalignment='center')
+            ax.text(-0.4 + start, n, string, horizontalalignment='center', verticalalignment='center')
             ax.plot(n * np.ones(total_frets), linestyle='solid', color='black')
+            plt.axvline(-0.4 + start, color='white', linewidth=11)
             # Fill fretboard with empty markers and label fret numbers
             for fret in range(1, total_frets):
                 ax.plot(fret, n, fillstyle='none', **marker_style)
@@ -88,17 +89,21 @@ class Scales:
         :param stop: fret to stop drawing at, defaults to 15
         """
         distance = abs(start - stop)
-        self._draw_fretboard(distance * .5 + 1, len(self.strings) / 2.5)
+        self._draw_fretboard(distance * .5 + 1, len(self.strings) / 2.5, start)
         plt.axis([start - 0.5, stop + 0.5, -.5, len(self.strings) - 0.5])
         plt.show()
         plt.close()
 
 
+# Test code
 if __name__ == '__main__':
     a_mixo = ['A', 'B', 'C#', 'D', 'E', 'F#', 'G']
     six_string = Scales(title='A Mixolydian', scale=a_mixo)
-    # six_string.draw(start=11, stop=15)
+    six_string.draw(start=11, stop=15)
     six_string.draw(start=4, stop=7)
+
+    e_mixo = ['E', 'F#', 'G#', 'A', 'B', 'C#', 'D']
+    Scales(title='E Mixolydian on 4 string bass', strings=['E', 'A', 'D', 'G'], scale=e_mixo).draw()
 
     gb_dorian = ['gb', 'Ab', 'Bbb', 'Cb', 'db', 'Eb', 'FB']
     flats = Scales(title='Gb Dorian', scale=gb_dorian)

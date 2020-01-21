@@ -21,7 +21,7 @@ from scales import Scales
 ```
 
 ## Usage
-Scales objects take at least the `scale` parameter, which should be a list of notes. They can be drawn using the `draw` function, where `start` and `stop` are the range of frets to show (defaults to showing 15 frets if not specified).
+Scales objects take at least the `scale` parameter, which should be a list of notes (the first note is treated as the root). They can be drawn using the `draw` function, where `start` and `stop` are the range of frets to show (defaults to showing 15 frets if not specified).
 
 For example:
 
