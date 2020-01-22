@@ -95,7 +95,12 @@ class Scales:
         y = len(self.strings) / 2.7
         self._draw_fretboard(x, y, start)
         # Zoom
-        plt.axis([start - 0.5, stop + 0.5, -.5, len(self.strings) - 0.5])
+        pad = 0.5
+        left = start - pad
+        right = stop + pad
+        bottom = 0 - pad
+        top = len(self.strings) - pad
+        plt.axis([left, right, bottom, top])
         plt.show()
         plt.close()
 
