@@ -58,7 +58,7 @@ class Scales:
         total_frets = 24
         for n, string in enumerate(self.strings):
             # Draw string labels and string lines
-            ax.text(-0.4 + start, n, string, horizontalalignment='center', verticalalignment='center')
+            ax.text(-0.4 + start, n, string.capitalize(), horizontalalignment='center', verticalalignment='center')
             ax.plot(n * np.ones(total_frets), linestyle='solid', color='black')
             plt.axvline(-0.4 + start, color='white', linewidth=11)
             # Fill fretboard with empty markers and label fret numbers
